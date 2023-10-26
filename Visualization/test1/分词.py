@@ -1,7 +1,8 @@
 import jieba
+import networkx as nx
 import torch
 from ltp import LTP
-import time
+import matplotlib.pyplot as plt  # 绘图库
 
 
 def preprocess(text):
@@ -45,10 +46,52 @@ def nameprocess(words):
         if output.pos == ['nh']:
             namelist.append(i)
 
-    print(namelist)
+    return namelist
 
 
-start_time = time.time()  # 设置起始的时间
+# 定义复杂网络模型构建函数，使用networkx库
+def build_network(words):
+    # 创建一个空的无向图
+    G = nx.Graph()
+    # 遍历每个词，将其作为节点添加到图中，并记录其出现次数作为节点权重
+    for w in words:
+        if G.has_node(w):
+            G.nodes[w]['weight'] += 1
+        else:
+            G.add_node(w, weight=1)
+    # 遍历每两个相邻的词，将其作为边添加到图中，并记录其共现次数作为边权重
+    for i in range(len(words) - 1):
+        w1 = words[i]
+        w2 = words[i + 1]
+        if G.has_edge(w1, w2):
+            G.edges[w1, w2]['weight'] += 1
+        else:
+            G.add_edge(w1, w2, weight=1)
+    return G
+
+
+# 定义复杂网络模型可视化函数，使用matplotlib库
+def visualize_network(G):
+    # 设置节点的大小和颜色，根据节点权重（出现次数）进行映射
+    node_size = [G.nodes[w]['weight'] * 50 for w in G.nodes()]
+    node_color = [G.nodes[w]['weight'] for w in G.nodes()]
+    # 设置边的粗细和颜色，根据边权重（共现次数）进行映射
+    edge_width = [G.edges[w1, w2]['weight'] * 0.5 for w1, w2 in G.edges()]
+    edge_color = [G.edges[w1, w2]['weight'] for w1, w2 in G.edges()]
+    # 使用spring布局，使得图中的节点分布更加美观
+    pos = nx.spring_layout(G)
+    # 绘制图形，并显示节点标签和图例
+    plt.figure(figsize=(12, 8))
+
+    # 修改部分：把绘制结果赋给mappable变量，并传给plt.colorbar函数
+    mappable = nx.draw_networkx(G, pos, node_size=node_size, node_color=node_color, edge_color=edge_color,
+                                width=edge_width,
+                                with_labels=True)
+
+    plt.colorbar(mappable, label='Weight')
+
+    plt.show()
+
 
 if torch.cuda.is_available():
     print('cuda')
@@ -56,7 +99,7 @@ else:
     print('cuda buneng yong ')
 text = open("zhaowendao.txt", "r", encoding="utf-8").read()
 words = preprocess(text)
-nameprocess(words)
+namelist = nameprocess(words)
+g = build_network(namelist)
+nx.write_gexf(g, "test.gexf")
 
-elapsed_time = time.time() - start_time  # 设置截止时间
-print('inference time cost: {}'.format(elapsed_time))  # 输出消耗的时间

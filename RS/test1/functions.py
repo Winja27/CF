@@ -286,4 +286,5 @@ def visualization(df_uir):
     g = sns.lineplot(x="Neighbors", y="MAE", hue="Algorithm",
                      style="Algorithm", markers=True, data=mae_df)
     plt.savefig('MAE' + '.pdf')
+    print("finished.")
     plt.show()

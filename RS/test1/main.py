@@ -1,6 +1,6 @@
 import functions as func
 folds, ratings, items, users = func.data_read(
-    'CF\\RS\\test1\\ratings.csv', 'CF\\RS\\test1\\movies.csv')
+    'ratings.csv', 'movies.csv')
 neighbors_require = func.neighbors_require(2)
 pairs = func.user_pair(users)
 df_uir = func.indexform(ratings)

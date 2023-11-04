@@ -310,7 +310,6 @@ def visualization(df_uir, df_prediction):
         mae_df = pd.concat([mae_df, df_row], ignore_index=True)
 
     rcParamters = {
-        'font.sans-serif': 'SimHei',
         'axes.unicode_minus': False,
         "figure.figsize": [12, 9],
         "figure.dpi": 300
@@ -318,6 +317,6 @@ def visualization(df_uir, df_prediction):
     sns.set(rc=rcParamters)
     g = sns.lineplot(x="Neighbors", y="MAE", hue="Algorithm",
                      style="Algorithm", markers=True, data=mae_df)
-    plt.savefig('MAE' + '.pdf')
+    plt.savefig('MAE' + '.html')
     print("finished.")
     plt.show()

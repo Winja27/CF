@@ -58,6 +58,7 @@ def predict_rating(user, item, train_set, user_similarity):
         predicted_rating = None
     return predicted_rating
 
+
 # 评估预测结果的平均绝对误差
 def calculate_mae(predictions, test_set):
     errors = []
@@ -67,6 +68,7 @@ def calculate_mae(predictions, test_set):
         errors.append(np.abs(pred - rating))
     # errors = np.abs(predictions - test_set['rating'].values)
     return np.mean(errors)
+
 
 # 画出k个邻居时User-based Slope One距离模型的平均绝对误差和误差直线
 k_values = [i for i in range(5, 101, 5)]  # 邻居的数量

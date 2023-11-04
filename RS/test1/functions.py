@@ -248,7 +248,6 @@ def averating(df_uir):
 def prediction(folds, df_uir, df_ave_rating, pairs, neighbors_require):
     ave_rating = df_ave_rating.to_dict()
     ave_rating = {k: v[0] for k, v in ave_rating.items()}
-
     dict_uir = df_uir.to_dict()
     for a, b in dict_uir.items():
         for c in list(b.keys()):

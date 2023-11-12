@@ -1,0 +1,1263 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2023-11-12">
+    <creator>NetworkX 3.1</creator>
+  </meta>
+  <graph defaultedgetype="undirected" mode="static" name="">
+    <attributes mode="static" class="node">
+      <attribute id="0" title="weight" type="long" />
+    </attributes>
+    <nodes>
+      <node id="星星" label="星星">
+        <attvalues>
+          <attvalue for="0" value="9" />
+        </attvalues>
+      </node>
+      <node id="长" label="长">
+        <attvalues>
+          <attvalue for="0" value="7" />
+        </attvalues>
+      </node>
+      <node id="方琳" label="方琳">
+        <attvalues>
+          <attvalue for="0" value="15" />
+        </attvalues>
+      </node>
+      <node id="通明" label="通明">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="光柱" label="光柱">
+        <attvalues>
+          <attvalue for="0" value="21" />
+        </attvalues>
+      </node>
+      <node id="殿" label="殿">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="巨柱" label="巨柱">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="柱子" label="柱子">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="强光" label="强光">
+        <attvalues>
+          <attvalue for="0" value="9" />
+        </attvalues>
+      </node>
+      <node id="太" label="太">
+        <attvalues>
+          <attvalue for="0" value="4" />
+        </attvalues>
+      </node>
+      <node id="高" label="高">
+        <attvalues>
+          <attvalue for="0" value="8" />
+        </attvalues>
+      </node>
+      <node id="达" label="达">
+        <attvalues>
+          <attvalue for="0" value="2" />
+        </attvalues>
+      </node>
+      <node id="摄氏" label="摄氏">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="服" label="服">
+        <attvalues>
+          <attvalue for="0" value="5" />
+        </attvalues>
+      </node>
+      <node id="乌云" label="乌云">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="云中" label="云中">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="文文" label="文文">
+        <attvalues>
+          <attvalue for="0" value="23" />
+        </attvalues>
+      </node>
+      <node id="高山" label="高山">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="珠峰" label="珠峰">
+        <attvalues>
+          <attvalue for="0" value="2" />
+        </attvalues>
+      </node>
+      <node id="号山" label="号山">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="比登" label="比登">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="沿盘" label="沿盘">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="岩石" label="岩石">
+        <attvalues>
+          <attvalue for="0" value="4" />
+        </attvalues>
+      </node>
+      <node id="青光" label="青光">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="剧增" label="剧增">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="服中" label="服中">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="红光" label="红光">
+        <attvalues>
+          <attvalue for="0" value="2" />
+        </attvalues>
+      </node>
+      <node id="大洞" label="大洞">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="全" label="全">
+        <attvalues>
+          <attvalue for="0" value="4" />
+        </attvalues>
+      </node>
+      <node id="时能" label="时能">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="顶峰" label="顶峰">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="蓝光" label="蓝光">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="小星" label="小星">
+        <attvalues>
+          <attvalue for="0" value="3" />
+        </attvalues>
+      </node>
+      <node id="巨峰" label="巨峰">
+        <attvalues>
+          <attvalue for="0" value="2" />
+        </attvalues>
+      </node>
+      <node id="白花花" label="白花花">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="海水" label="海水">
+        <attvalues>
+          <attvalue for="0" value="4" />
+        </attvalues>
+      </node>
+      <node id="大海" label="大海">
+        <attvalues>
+          <attvalue for="0" value="9" />
+        </attvalues>
+      </node>
+      <node id="霞光" label="霞光">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="甲板" label="甲板">
+        <attvalues>
+          <attvalue for="0" value="3" />
+        </attvalues>
+      </node>
+      <node id="灵儿" label="灵儿">
+        <attvalues>
+          <attvalue for="0" value="10" />
+        </attvalues>
+      </node>
+      <node id="地朝" label="地朝">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="初升" label="初升">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="海风" label="海风">
+        <attvalues>
+          <attvalue for="0" value="2" />
+        </attvalues>
+      </node>
+      <node id="长发" label="长发">
+        <attvalues>
+          <attvalue for="0" value="2" />
+        </attvalues>
+      </node>
+      <node id="海天" label="海天">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="天水" label="天水">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="向海" label="向海">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="三百" label="三百">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="生路" label="生路">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="阿东" label="阿东">
+        <attvalues>
+          <attvalue for="0" value="9" />
+        </attvalues>
+      </node>
+      <node id="丁仪" label="丁仪">
+        <attvalues>
+          <attvalue for="0" value="19" />
+        </attvalues>
+      </node>
+      <node id="关" label="关">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="小子" label="小子">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="晶莹" label="晶莹">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="海藻" label="海藻">
+        <attvalues>
+          <attvalue for="0" value="2" />
+        </attvalues>
+      </node>
+      <node id="阳光" label="阳光">
+        <attvalues>
+          <attvalue for="0" value="7" />
+        </attvalues>
+      </node>
+      <node id="钟爱" label="钟爱">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="水已" label="水已">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="毛" label="毛">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="状物" label="状物">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="万代" label="万代">
+        <attvalues>
+          <attvalue for="0" value="2" />
+        </attvalues>
+      </node>
+      <node id="间" label="间">
+        <attvalues>
+          <attvalue for="0" value="2" />
+        </attvalues>
+      </node>
+      <node id="百代" label="百代">
+        <attvalues>
+          <attvalue for="0" value="6" />
+        </attvalues>
+      </node>
+      <node id="汉子" label="汉子">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="航程" label="航程">
+        <attvalues>
+          <attvalue for="0" value="4" />
+        </attvalues>
+      </node>
+      <node id="慧尾" label="慧尾">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="林立" label="林立">
+        <attvalues>
+          <attvalue for="0" value="2" />
+        </attvalues>
+      </node>
+      <node id="成" label="成">
+        <attvalues>
+          <attvalue for="0" value="7" />
+        </attvalues>
+      </node>
+      <node id="坡度" label="坡度">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="钟头" label="钟头">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="高高" label="高高">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="扁" label="扁">
+        <attvalues>
+          <attvalue for="0" value="3" />
+        </attvalues>
+      </node>
+      <node id="扁圈" label="扁圈">
+        <attvalues>
+          <attvalue for="0" value="2" />
+        </attvalues>
+      </node>
+      <node id="天才" label="天才">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="连神" label="连神">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="王八蛋" label="王八蛋">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="冰原" label="冰原">
+        <attvalues>
+          <attvalue for="0" value="12" />
+        </attvalues>
+      </node>
+      <node id="黎星" label="黎星">
+        <attvalues>
+          <attvalue for="0" value="2" />
+        </attvalues>
+      </node>
+      <node id="刚" label="刚">
+        <attvalues>
+          <attvalue for="0" value="4" />
+        </attvalues>
+      </node>
+      <node id="余光" label="余光">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="海在" label="海在">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="光照" label="光照">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="启航" label="启航">
+        <attvalues>
+          <attvalue for="0" value="3" />
+        </attvalues>
+      </node>
+      <node id="雷霆" label="雷霆">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="钱德勒" label="钱德勒">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="边呆立" label="边呆立">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="蓝莹莹" label="蓝莹莹">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="池水" label="池水">
+        <attvalues>
+          <attvalue for="0" value="2" />
+        </attvalues>
+      </node>
+      <node id="光" label="光">
+        <attvalues>
+          <attvalue for="0" value="3" />
+        </attvalues>
+      </node>
+      <node id="小管儿" label="小管儿">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="白浪" label="白浪">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="碎金" label="碎金">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="梦娜" label="梦娜">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="管儿" label="管儿">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="上光" label="上光">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="荡" label="荡">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="时则" label="时则">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="威力" label="威力">
+        <attvalues>
+          <attvalue for="0" value="3" />
+        </attvalues>
+      </node>
+      <node id="逸" label="逸">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="地应力" label="地应力">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="可怖" label="可怖">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="二百" label="二百">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="山彬加" label="山彬加">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="代子" label="代子">
+        <attvalues>
+          <attvalue for="0" value="27" />
+        </attvalues>
+      </node>
+      <node id="修" label="修">
+        <attvalues>
+          <attvalue for="0" value="2" />
+        </attvalues>
+      </node>
+      <node id="曙光" label="曙光">
+        <attvalues>
+          <attvalue for="0" value="2" />
+        </attvalues>
+      </node>
+      <node id="照亮" label="照亮">
+        <attvalues>
+          <attvalue for="0" value="2" />
+        </attvalues>
+      </node>
+      <node id="金辉" label="金辉">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="曼哈顿" label="曼哈顿">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="正中" label="正中">
+        <attvalues>
+          <attvalue for="0" value="2" />
+        </attvalues>
+      </node>
+      <node id="大山" label="大山">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="戴" label="戴">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="长空" label="长空">
+        <attvalues>
+          <attvalue for="0" value="2" />
+        </attvalues>
+      </node>
+      <node id="戴上" label="戴上">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="疾驰" label="疾驰">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="冰海" label="冰海">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="白点" label="白点">
+        <attvalues>
+          <attvalue for="0" value="2" />
+        </attvalues>
+      </node>
+      <node id="巨兽" label="巨兽">
+        <attvalues>
+          <attvalue for="0" value="2" />
+        </attvalues>
+      </node>
+      <node id="天海" label="天海">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="云层" label="云层">
+        <attvalues>
+          <attvalue for="0" value="5" />
+        </attvalues>
+      </node>
+      <node id="太齐" label="太齐">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="白边" label="白边">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="毛发" label="毛发">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="关上" label="关上">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="约莫" label="约莫">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="巨拳" label="巨拳">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="地立" label="地立">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="冰凌" label="冰凌">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="柱" label="柱">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="航出" label="航出">
+        <attvalues>
+          <attvalue for="0" value="3" />
+        </attvalues>
+      </node>
+      <node id="重孙" label="重孙">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="灰" label="灰">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="粘" label="粘">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="深海" label="深海">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="追授" label="追授">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="单座" label="单座">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="钟表" label="钟表">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="圆盘" label="圆盘">
+        <attvalues>
+          <attvalue for="0" value="2" />
+        </attvalues>
+      </node>
+      <node id="巨怪" label="巨怪">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="成让" label="成让">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="浮" label="浮">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="云海" label="云海">
+        <attvalues>
+          <attvalue for="0" value="3" />
+        </attvalues>
+      </node>
+      <node id="阴森" label="阴森">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="领航" label="领航">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="广漠" label="广漠">
+        <attvalues>
+          <attvalue for="0" value="3" />
+        </attvalues>
+      </node>
+      <node id="海潮" label="海潮">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="天文" label="天文">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="像素" label="像素">
+        <attvalues>
+          <attvalue for="0" value="2" />
+        </attvalues>
+      </node>
+      <node id="白痴" label="白痴">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="休克" label="休克">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="倒戈" label="倒戈">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="高声" label="高声">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="将星" label="将星">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="高得望" label="高得望">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="顶" label="顶">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="星海" label="星海">
+        <attvalues>
+          <attvalue for="0" value="2" />
+        </attvalues>
+      </node>
+      <node id="列兵" label="列兵">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="麻木" label="麻木">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="块冰" label="块冰">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="偿清" label="偿清">
+        <attvalues>
+          <attvalue for="0" value="2" />
+        </attvalues>
+      </node>
+      <node id="离奇" label="离奇">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="大神" label="大神">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="炭基" label="炭基">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="白光" label="白光">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="洒向" label="洒向">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="干冰" label="干冰">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="海冰" label="海冰">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="金星" label="金星">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="黄绿" label="黄绿">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="小山" label="小山">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="星河" label="星河">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="长达" label="长达">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="太长太" label="太长太">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="年迈" label="年迈">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="老眼" label="老眼">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="孙子" label="孙子">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="孙女" label="孙女">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+      <node id="小溪" label="小溪">
+        <attvalues>
+          <attvalue for="0" value="1" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge source="星星" target="长" id="0" weight="1" />
+      <edge source="星星" target="光柱" id="1" weight="2" />
+      <edge source="星星" target="文文" id="2" weight="1" />
+      <edge source="星星" target="汉子" id="3" weight="1" />
+      <edge source="星星" target="大海" id="4" weight="2" />
+      <edge source="星星" target="百代" id="5" weight="1" />
+      <edge source="星星" target="冰原" id="6" weight="1" />
+      <edge source="星星" target="代子" id="7" weight="2" />
+      <edge source="星星" target="强光" id="8" weight="1" />
+      <edge source="星星" target="海水" id="9" weight="1" />
+      <edge source="星星" target="领航" id="10" weight="1" />
+      <edge source="星星" target="高" id="11" weight="1" />
+      <edge source="星星" target="圆盘" id="12" weight="1" />
+      <edge source="星星" target="大神" id="13" weight="1" />
+      <edge source="长" target="方琳" id="14" weight="2" />
+      <edge source="长" target="通明" id="15" weight="1" />
+      <edge source="长" target="比登" id="16" weight="1" />
+      <edge source="长" target="沿盘" id="17" weight="2" />
+      <edge source="长" target="岩石" id="18" weight="1" />
+      <edge source="长" target="长空" id="19" weight="1" />
+      <edge source="长" target="代子" id="20" weight="1" />
+      <edge source="长" target="丁仪" id="21" weight="1" />
+      <edge source="长" target="倒戈" id="22" weight="1" />
+      <edge source="长" target="太长太" id="23" weight="1" />
+      <edge source="长" target="霞光" id="24" weight="1" />
+      <edge source="方琳" target="间" id="25" weight="1" />
+      <edge source="方琳" target="全" id="26" weight="1" />
+      <edge source="方琳" target="黎星" id="27" weight="2" />
+      <edge source="方琳" target="丁仪" id="28" weight="7" />
+      <edge source="方琳" target="小星" id="29" weight="1" />
+      <edge source="方琳" target="方琳" id="30" weight="4" />
+      <edge source="方琳" target="刚" id="31" weight="1" />
+      <edge source="方琳" target="成" id="32" weight="1" />
+      <edge source="方琳" target="冰原" id="33" weight="1" />
+      <edge source="方琳" target="可怖" id="34" weight="1" />
+      <edge source="方琳" target="灰" id="35" weight="1" />
+      <edge source="方琳" target="文文" id="36" weight="1" />
+      <edge source="方琳" target="航程" id="37" weight="1" />
+      <edge source="方琳" target="光柱" id="38" weight="1" />
+      <edge source="通明" target="光柱" id="39" weight="1" />
+      <edge source="光柱" target="殿" id="40" weight="1" />
+      <edge source="光柱" target="太" id="41" weight="2" />
+      <edge source="光柱" target="高" id="42" weight="2" />
+      <edge source="光柱" target="服" id="43" weight="1" />
+      <edge source="光柱" target="乌云" id="44" weight="2" />
+      <edge source="光柱" target="强光" id="45" weight="3" />
+      <edge source="光柱" target="云中" id="46" weight="1" />
+      <edge source="光柱" target="文文" id="47" weight="1" />
+      <edge source="光柱" target="高山" id="48" weight="1" />
+      <edge source="光柱" target="顶峰" id="49" weight="1" />
+      <edge source="光柱" target="巨峰" id="50" weight="1" />
+      <edge source="光柱" target="白花花" id="51" weight="1" />
+      <edge source="光柱" target="大海" id="52" weight="2" />
+      <edge source="光柱" target="霞光" id="53" weight="2" />
+      <edge source="光柱" target="阳光" id="54" weight="1" />
+      <edge source="光柱" target="海风" id="55" weight="1" />
+      <edge source="光柱" target="光柱" id="56" weight="3" />
+      <edge source="光柱" target="林立" id="57" weight="3" />
+      <edge source="光柱" target="间" id="58" weight="1" />
+      <edge source="光柱" target="圆盘" id="59" weight="1" />
+      <edge source="光柱" target="光" id="60" weight="1" />
+      <edge source="光柱" target="丁仪" id="61" weight="1" />
+      <edge source="光柱" target="蓝光" id="62" weight="1" />
+      <edge source="光柱" target="黄绿" id="63" weight="1" />
+      <edge source="殿" target="巨柱" id="64" weight="1" />
+      <edge source="巨柱" target="柱子" id="65" weight="1" />
+      <edge source="柱子" target="强光" id="66" weight="1" />
+      <edge source="强光" target="太" id="67" weight="1" />
+      <edge source="强光" target="云中" id="68" weight="1" />
+      <edge source="强光" target="长空" id="69" weight="1" />
+      <edge source="强光" target="白光" id="70" weight="1" />
+      <edge source="强光" target="强光" id="71" weight="3" />
+      <edge source="强光" target="成" id="72" weight="1" />
+      <edge source="强光" target="阳光" id="73" weight="1" />
+      <edge source="强光" target="金星" id="74" weight="1" />
+      <edge source="太" target="蓝光" id="75" weight="1" />
+      <edge source="太" target="修" id="76" weight="2" />
+      <edge source="太" target="块冰" id="77" weight="1" />
+      <edge source="太" target="偿清" id="78" weight="1" />
+      <edge source="高" target="达" id="79" weight="1" />
+      <edge source="高" target="珠峰" id="80" weight="3" />
+      <edge source="高" target="号山" id="81" weight="1" />
+      <edge source="高" target="蓝光" id="82" weight="1" />
+      <edge source="高" target="小星" id="83" weight="1" />
+      <edge source="高" target="海水" id="84" weight="1" />
+      <edge source="高" target="文文" id="85" weight="1" />
+      <edge source="高" target="灵儿" id="86" weight="1" />
+      <edge source="高" target="约莫" id="87" weight="1" />
+      <edge source="高" target="巨拳" id="88" weight="1" />
+      <edge source="高" target="云海" id="89" weight="1" />
+      <edge source="达" target="摄氏" id="90" weight="1" />
+      <edge source="达" target="可怖" id="91" weight="1" />
+      <edge source="达" target="二百" id="92" weight="1" />
+      <edge source="摄氏" target="服" id="93" weight="1" />
+      <edge source="服" target="丁仪" id="94" weight="1" />
+      <edge source="服" target="林立" id="95" weight="1" />
+      <edge source="服" target="光照" id="96" weight="1" />
+      <edge source="服" target="启航" id="97" weight="1" />
+      <edge source="服" target="广漠" id="98" weight="1" />
+      <edge source="服" target="岩石" id="99" weight="1" />
+      <edge source="服" target="万代" id="100" weight="1" />
+      <edge source="服" target="麻木" id="101" weight="1" />
+      <edge source="文文" target="高山" id="102" weight="1" />
+      <edge source="文文" target="珠峰" id="103" weight="1" />
+      <edge source="文文" target="甲板" id="104" weight="1" />
+      <edge source="文文" target="文文" id="105" weight="5" />
+      <edge source="文文" target="灵儿" id="106" weight="4" />
+      <edge source="文文" target="地朝" id="107" weight="1" />
+      <edge source="文文" target="三百" id="108" weight="1" />
+      <edge source="文文" target="生路" id="109" weight="1" />
+      <edge source="文文" target="小子" id="110" weight="1" />
+      <edge source="文文" target="晶莹" id="111" weight="1" />
+      <edge source="文文" target="阿东" id="112" weight="4" />
+      <edge source="文文" target="状物" id="113" weight="1" />
+      <edge source="文文" target="万代" id="114" weight="1" />
+      <edge source="文文" target="海风" id="115" weight="1" />
+      <edge source="文文" target="汉子" id="116" weight="1" />
+      <edge source="文文" target="小星" id="117" weight="1" />
+      <edge source="文文" target="成" id="118" weight="1" />
+      <edge source="文文" target="海在" id="119" weight="1" />
+      <edge source="文文" target="钱德勒" id="120" weight="1" />
+      <edge source="文文" target="边呆立" id="121" weight="1" />
+      <edge source="文文" target="丁仪" id="122" weight="2" />
+      <edge source="文文" target="代子" id="123" weight="3" />
+      <edge source="文文" target="金辉" id="124" weight="1" />
+      <edge source="文文" target="粘" id="125" weight="1" />
+      <edge source="号山" target="比登" id="126" weight="1" />
+      <edge source="岩石" target="青光" id="127" weight="1" />
+      <edge source="岩石" target="大洞" id="128" weight="1" />
+      <edge source="岩石" target="全" id="129" weight="1" />
+      <edge source="岩石" target="海潮" id="130" weight="1" />
+      <edge source="岩石" target="成" id="131" weight="1" />
+      <edge source="岩石" target="洒向" id="132" weight="1" />
+      <edge source="青光" target="剧增" id="133" weight="1" />
+      <edge source="剧增" target="服中" id="134" weight="1" />
+      <edge source="服中" target="红光" id="135" weight="1" />
+      <edge source="红光" target="大洞" id="136" weight="1" />
+      <edge source="红光" target="阴森" id="137" weight="1" />
+      <edge source="红光" target="云海" id="138" weight="1" />
+      <edge source="全" target="时能" id="139" weight="1" />
+      <edge source="全" target="百代" id="140" weight="1" />
+      <edge source="全" target="连神" id="141" weight="1" />
+      <edge source="全" target="成" id="142" weight="2" />
+      <edge source="全" target="阿东" id="143" weight="1" />
+      <edge source="时能" target="顶峰" id="144" weight="1" />
+      <edge source="蓝光" target="大海" id="145" weight="2" />
+      <edge source="蓝光" target="启航" id="146" weight="1" />
+      <edge source="蓝光" target="深海" id="147" weight="2" />
+      <edge source="蓝光" target="蓝光" id="148" weight="1" />
+      <edge source="蓝光" target="丁仪" id="149" weight="1" />
+      <edge source="蓝光" target="巨兽" id="150" weight="1" />
+      <edge source="小星" target="巨峰" id="151" weight="1" />
+      <edge source="小星" target="灵儿" id="152" weight="1" />
+      <edge source="小星" target="丁仪" id="153" weight="1" />
+      <edge source="巨峰" target="巨峰" id="154" weight="1" />
+      <edge source="白花花" target="海水" id="155" weight="1" />
+      <edge source="海水" target="冰原" id="156" weight="2" />
+      <edge source="海水" target="地立" id="157" weight="1" />
+      <edge source="海水" target="代子" id="158" weight="1" />
+      <edge source="海水" target="阳光" id="159" weight="1" />
+      <edge source="大海" target="霞光" id="160" weight="3" />
+      <edge source="大海" target="慧尾" id="161" weight="1" />
+      <edge source="大海" target="冰原" id="162" weight="3" />
+      <edge source="大海" target="丁仪" id="163" weight="1" />
+      <edge source="大海" target="离奇" id="164" weight="1" />
+      <edge source="大海" target="海冰" id="165" weight="1" />
+      <edge source="大海" target="光" id="166" weight="1" />
+      <edge source="大海" target="黄绿" id="167" weight="1" />
+      <edge source="霞光" target="霞光" id="168" weight="2" />
+      <edge source="霞光" target="甲板" id="169" weight="1" />
+      <edge source="霞光" target="启航" id="170" weight="1" />
+      <edge source="甲板" target="地朝" id="171" weight="1" />
+      <edge source="甲板" target="初升" id="172" weight="1" />
+      <edge source="甲板" target="天水" id="173" weight="1" />
+      <edge source="甲板" target="向海" id="174" weight="1" />
+      <edge source="灵儿" target="灵儿" id="175" weight="1" />
+      <edge source="灵儿" target="向海" id="176" weight="1" />
+      <edge source="灵儿" target="阿东" id="177" weight="2" />
+      <edge source="灵儿" target="高高" id="178" weight="1" />
+      <edge source="灵儿" target="扁" id="179" weight="1" />
+      <edge source="灵儿" target="池水" id="180" weight="1" />
+      <edge source="灵儿" target="小管儿" id="181" weight="2" />
+      <edge source="灵儿" target="白浪" id="182" weight="1" />
+      <edge source="灵儿" target="刚" id="183" weight="1" />
+      <edge source="灵儿" target="管儿" id="184" weight="1" />
+      <edge source="灵儿" target="上光" id="185" weight="1" />
+      <edge source="初升" target="海风" id="186" weight="1" />
+      <edge source="海风" target="长发" id="187" weight="1" />
+      <edge source="长发" target="海天" id="188" weight="1" />
+      <edge source="长发" target="冰原" id="189" weight="2" />
+      <edge source="海天" target="天水" id="190" weight="1" />
+      <edge source="三百" target="生路" id="191" weight="1" />
+      <edge source="阿东" target="丁仪" id="192" weight="1" />
+      <edge source="阿东" target="关" id="193" weight="1" />
+      <edge source="阿东" target="阿东" id="194" weight="1" />
+      <edge source="阿东" target="小子" id="195" weight="1" />
+      <edge source="阿东" target="晶莹" id="196" weight="1" />
+      <edge source="阿东" target="海藻" id="197" weight="1" />
+      <edge source="阿东" target="阳光" id="198" weight="2" />
+      <edge source="阿东" target="钟爱" id="199" weight="1" />
+      <edge source="阿东" target="水已" id="200" weight="1" />
+      <edge source="丁仪" target="关" id="201" weight="1" />
+      <edge source="丁仪" target="王八蛋" id="202" weight="1" />
+      <edge source="丁仪" target="冰原" id="203" weight="1" />
+      <edge source="丁仪" target="黎星" id="204" weight="2" />
+      <edge source="丁仪" target="丁仪" id="205" weight="2" />
+      <edge source="丁仪" target="余光" id="206" weight="1" />
+      <edge source="丁仪" target="雷霆" id="207" weight="1" />
+      <edge source="丁仪" target="钱德勒" id="208" weight="1" />
+      <edge source="丁仪" target="地应力" id="209" weight="1" />
+      <edge source="丁仪" target="代子" id="210" weight="5" />
+      <edge source="丁仪" target="追授" id="211" weight="2" />
+      <edge source="丁仪" target="单座" id="212" weight="1" />
+      <edge source="丁仪" target="海潮" id="213" weight="1" />
+      <edge source="海藻" target="海藻" id="214" weight="1" />
+      <edge source="海藻" target="阳光" id="215" weight="1" />
+      <edge source="阳光" target="阳光" id="216" weight="1" />
+      <edge source="阳光" target="钟爱" id="217" weight="1" />
+      <edge source="阳光" target="百代" id="218" weight="1" />
+      <edge source="阳光" target="曼哈顿" id="219" weight="1" />
+      <edge source="阳光" target="正中" id="220" weight="1" />
+      <edge source="阳光" target="长空" id="221" weight="1" />
+      <edge source="阳光" target="光" id="222" weight="1" />
+      <edge source="水已" target="毛" id="223" weight="1" />
+      <edge source="毛" target="状物" id="224" weight="1" />
+      <edge source="万代" target="间" id="225" weight="1" />
+      <edge source="万代" target="列兵" id="226" weight="1" />
+      <edge source="间" target="成" id="227" weight="1" />
+      <edge source="百代" target="航程" id="228" weight="1" />
+      <edge source="百代" target="威力" id="229" weight="1" />
+      <edge source="百代" target="重孙" id="230" weight="1" />
+      <edge source="百代" target="代子" id="231" weight="1" />
+      <edge source="百代" target="曙光" id="232" weight="1" />
+      <edge source="百代" target="广漠" id="233" weight="1" />
+      <edge source="百代" target="列兵" id="234" weight="1" />
+      <edge source="百代" target="老眼" id="235" weight="1" />
+      <edge source="百代" target="孙子" id="236" weight="1" />
+      <edge source="航程" target="慧尾" id="237" weight="1" />
+      <edge source="航程" target="广漠" id="238" weight="1" />
+      <edge source="航程" target="星河" id="239" weight="1" />
+      <edge source="航程" target="长达" id="240" weight="2" />
+      <edge source="航程" target="太长太" id="241" weight="1" />
+      <edge source="成" target="坡度" id="242" weight="1" />
+      <edge source="成" target="天才" id="243" weight="1" />
+      <edge source="成" target="连神" id="244" weight="1" />
+      <edge source="成" target="王八蛋" id="245" weight="1" />
+      <edge source="成" target="荡" id="246" weight="1" />
+      <edge source="成" target="白点" id="247" weight="1" />
+      <edge source="成" target="代子" id="248" weight="1" />
+      <edge source="坡度" target="钟头" id="249" weight="1" />
+      <edge source="钟头" target="高高" id="250" weight="1" />
+      <edge source="扁" target="扁" id="251" weight="2" />
+      <edge source="扁" target="扁圈" id="252" weight="1" />
+      <edge source="扁圈" target="扁圈" id="253" weight="1" />
+      <edge source="扁圈" target="天才" id="254" weight="1" />
+      <edge source="冰原" target="启航" id="255" weight="1" />
+      <edge source="冰原" target="雷霆" id="256" weight="1" />
+      <edge source="冰原" target="二百" id="257" weight="1" />
+      <edge source="冰原" target="冰原" id="258" weight="2" />
+      <edge source="冰原" target="山彬加" id="259" weight="1" />
+      <edge source="冰原" target="照亮" id="260" weight="1" />
+      <edge source="冰原" target="代子" id="261" weight="1" />
+      <edge source="冰原" target="圆盘" id="262" weight="1" />
+      <edge source="冰原" target="炭基" id="263" weight="1" />
+      <edge source="冰原" target="白光" id="264" weight="1" />
+      <edge source="冰原" target="小山" id="265" weight="1" />
+      <edge source="刚" target="余光" id="266" weight="1" />
+      <edge source="刚" target="梦娜" id="267" weight="1" />
+      <edge source="刚" target="巨兽" id="268" weight="1" />
+      <edge source="刚" target="刚" id="269" weight="1" />
+      <edge source="刚" target="天海" id="270" weight="1" />
+      <edge source="海在" target="光照" id="271" weight="1" />
+      <edge source="启航" target="代子" id="272" weight="1" />
+      <edge source="启航" target="年迈" id="273" weight="1" />
+      <edge source="边呆立" target="蓝莹莹" id="274" weight="1" />
+      <edge source="蓝莹莹" target="池水" id="275" weight="1" />
+      <edge source="池水" target="光" id="276" weight="2" />
+      <edge source="光" target="巨怪" id="277" weight="1" />
+      <edge source="白浪" target="碎金" id="278" weight="1" />
+      <edge source="碎金" target="梦娜" id="279" weight="1" />
+      <edge source="管儿" target="上光" id="280" weight="1" />
+      <edge source="荡" target="时则" id="281" weight="1" />
+      <edge source="时则" target="威力" id="282" weight="1" />
+      <edge source="威力" target="逸" id="283" weight="1" />
+      <edge source="威力" target="大山" id="284" weight="1" />
+      <edge source="威力" target="代子" id="285" weight="1" />
+      <edge source="威力" target="航出" id="286" weight="1" />
+      <edge source="逸" target="地应力" id="287" weight="1" />
+      <edge source="山彬加" target="代子" id="288" weight="1" />
+      <edge source="代子" target="修" id="289" weight="2" />
+      <edge source="代子" target="曙光" id="290" weight="1" />
+      <edge source="代子" target="正中" id="291" weight="1" />
+      <edge source="代子" target="大山" id="292" weight="1" />
+      <edge source="代子" target="代子" id="293" weight="4" />
+      <edge source="代子" target="戴" id="294" weight="2" />
+      <edge source="代子" target="戴上" id="295" weight="1" />
+      <edge source="代子" target="巨兽" id="296" weight="2" />
+      <edge source="代子" target="白边" id="297" weight="1" />
+      <edge source="代子" target="毛发" id="298" weight="1" />
+      <edge source="代子" target="巨拳" id="299" weight="1" />
+      <edge source="代子" target="柱" id="300" weight="1" />
+      <edge source="代子" target="航出" id="301" weight="1" />
+      <edge source="代子" target="粘" id="302" weight="1" />
+      <edge source="代子" target="单座" id="303" weight="1" />
+      <edge source="代子" target="钟表" id="304" weight="1" />
+      <edge source="代子" target="天文" id="305" weight="2" />
+      <edge source="代子" target="像素" id="306" weight="1" />
+      <edge source="代子" target="白痴" id="307" weight="1" />
+      <edge source="代子" target="休克" id="308" weight="2" />
+      <edge source="代子" target="倒戈" id="309" weight="1" />
+      <edge source="代子" target="高声" id="310" weight="1" />
+      <edge source="代子" target="小溪" id="311" weight="1" />
+      <edge source="曙光" target="照亮" id="312" weight="2" />
+      <edge source="照亮" target="圆盘" id="313" weight="1" />
+      <edge source="金辉" target="曼哈顿" id="314" weight="1" />
+      <edge source="正中" target="云海" id="315" weight="1" />
+      <edge source="正中" target="阴森" id="316" weight="1" />
+      <edge source="长空" target="钟表" id="317" weight="1" />
+      <edge source="戴上" target="疾驰" id="318" weight="1" />
+      <edge source="疾驰" target="冰海" id="319" weight="1" />
+      <edge source="冰海" target="白点" id="320" weight="1" />
+      <edge source="白点" target="白点" id="321" weight="1" />
+      <edge source="天海" target="云层" id="322" weight="1" />
+      <edge source="云层" target="云层" id="323" weight="2" />
+      <edge source="云层" target="太齐" id="324" weight="1" />
+      <edge source="云层" target="巨怪" id="325" weight="1" />
+      <edge source="云层" target="成让" id="326" weight="2" />
+      <edge source="云层" target="浮" id="327" weight="1" />
+      <edge source="太齐" target="白边" id="328" weight="1" />
+      <edge source="毛发" target="关上" id="329" weight="1" />
+      <edge source="关上" target="约莫" id="330" weight="1" />
+      <edge source="地立" target="冰凌" id="331" weight="1" />
+      <edge source="冰凌" target="柱" id="332" weight="1" />
+      <edge source="航出" target="金星" id="333" weight="1" />
+      <edge source="航出" target="航出" id="334" weight="1" />
+      <edge source="航出" target="广漠" id="335" weight="1" />
+      <edge source="重孙" target="灰" id="336" weight="1" />
+      <edge source="浮" target="云海" id="337" weight="1" />
+      <edge source="云海" target="领航" id="338" weight="1" />
+      <edge source="云海" target="广漠" id="339" weight="1" />
+      <edge source="广漠" target="星海" id="340" weight="1" />
+      <edge source="像素" target="像素" id="341" weight="1" />
+      <edge source="像素" target="白痴" id="342" weight="1" />
+      <edge source="高声" target="将星" id="343" weight="1" />
+      <edge source="将星" target="高得望" id="344" weight="1" />
+      <edge source="高得望" target="顶" id="345" weight="1" />
+      <edge source="顶" target="星海" id="346" weight="1" />
+      <edge source="星海" target="星海" id="347" weight="1" />
+      <edge source="麻木" target="块冰" id="348" weight="1" />
+      <edge source="偿清" target="偿清" id="349" weight="1" />
+      <edge source="偿清" target="离奇" id="350" weight="1" />
+      <edge source="大神" target="炭基" id="351" weight="1" />
+      <edge source="洒向" target="干冰" id="352" weight="1" />
+      <edge source="干冰" target="海冰" id="353" weight="1" />
+      <edge source="小山" target="星河" id="354" weight="1" />
+      <edge source="年迈" target="老眼" id="355" weight="1" />
+      <edge source="孙子" target="孙女" id="356" weight="1" />
+      <edge source="孙女" target="小溪" id="357" weight="1" />
+    </edges>
+  </graph>
+</gexf>

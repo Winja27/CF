@@ -101,5 +101,5 @@ text = open("zhaowendao.txt", "r", encoding="utf-8").read()
 words = preprocess(text)
 namelist = nameprocess(words)
 g = build_network(namelist)
-nx.write_gexf(g, "test.gexf")
+nx.write_gexf(g, "zhaowendao.gexf")
 

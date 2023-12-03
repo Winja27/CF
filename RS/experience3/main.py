@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # 读入Ratings数据并保存和索引
-ratings = pd.read_csv('ratings.csv',nrows=1000)#
+ratings = pd.read_csv('ratings.csv',nrows=10000)#
 
 # 数据按折n验证分割成训练集和测试集
 n = 5  # 将数据分为n折

@@ -41,7 +41,7 @@ def chunks(arr, m):  # 分块函数
 
 
 def neighbors_require1():
-    neighbors_require = [i for i in range(5, 5 * (10 + 1), 5)]
+    neighbors_require = [i for i in range(5, 5 * (20 + 1), 5)]
     return neighbors_require
 
 

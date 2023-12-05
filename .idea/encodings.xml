@@ -2,5 +2,9 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/Visualization/experience3/600519.SH.CSV" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Visualization/test2/functions.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Visualization/test2/students_score_1.csv" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Visualization/test2/students_score_2.csv" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

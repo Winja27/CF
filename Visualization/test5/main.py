@@ -1,162 +1,71 @@
 import pandas as pd
-# 通过JoitQuant聚宽网提供的API导入相关财务报表的数据
-from jqdatasdk import *
+import matplotlib.pyplot as plt
+# 假设CSV文件名为'financial_data.csv'
+df = pd.read_csv('贵州茅台近十年财报.csv', index_col=1)
 
-auth('13629036040', 'Lzy20030227')
-DATE = 2022
-CODE = "600519.XSHG"  # 贵州茅台
+# 提取关键指标数据
+gross_margin = df.loc['营业毛利率', '2013':'2022'].astype(float)
+net_margin = df.loc['净利率 = 纯益率', '2013':'2022'].astype(float)
+return_on_assets = df.loc['总资产报酬率 RoA', '2013':'2022'].astype(float)
+revenue = df.loc['营业活动现金流量(百万元)', '2013':'2022'].astype(float)
+net_profit = df.loc['税后净利(百万元)', '2013':'2022'].astype(float)
+debt_ratio = df.loc['负债占资产比率', '2013':'2022'].astype(float)
+current_ratio = df.loc['流动比率', '2013':'2022'].astype(float)
+operating_activities = df.loc['营业活动现金流量(百万元)', '2013':'2022'].astype(float)
+investing_activities = df.loc['投资活动现金流量(百万元)', '2013':'2022'].astype(float)
+financing_activities = df.loc['筹资活动现金流量(百万元)', '2013':'2022'].astype(float)
 
-# STK_CASHFLOW_STATEMENT: 合并现金流量表
-# fix_intan_other_asset_acqui_cash: 构建固定资产、无形资产和其他长期资产支付的现金
-# fixed_assets_depreciation：固定资产折旧
-# intangible_assets_amortization：无形资产摊销
-# defferred_expense_amortization：长期待摊费用摊销
+# 准备年份标签
+years = gross_margin.index.tolist()
 
-q = query(finance.STK_CASHFLOW_STATEMENT.fix_intan_other_asset_acqui_cash,
-          finance.STK_CASHFLOW_STATEMENT.start_date,
-          finance.STK_CASHFLOW_STATEMENT.end_date,
-          finance.STK_CASHFLOW_STATEMENT.fixed_assets_depreciation,
-          finance.STK_CASHFLOW_STATEMENT.intangible_assets_amortization,
-          finance.STK_CASHFLOW_STATEMENT.defferred_expense_amortization
-          ).filter(
-    finance.STK_CASHFLOW_STATEMENT.code == CODE,
-    # 查询2022-01-01~2022-12-31时段的合并现金流量表
-    finance.STK_CASHFLOW_STATEMENT.end_date == str(DATE) + "-12-31"
-)
-cashflow = finance.run_query(q)# 现金流
-# income: 利润表
-# income_tax_expense: 所得税费用
-# financial_expense: 财务费用
+# 设置图形大小
+plt.figure(figsize=(14, 10))
 
-q = query(income.income_tax_expense,
-          income.total_profit,
-          income.financial_expense
-          ).filter(
-    income.code == CODE,
-)
-incstat = get_fundamentals(q, statDate='2022')  # 查询2022年年报
+# 毛利率和净利润率
+plt.subplot(3, 2, 1)
+plt.plot(years, gross_margin, marker='o', label='Gross Margin')
+plt.plot(years, net_margin, marker='o', label='Net Margin')
+plt.title('Gross Margin and Net Margin Over Years')
+plt.xlabel('Year')
+plt.ylabel('Percentage (%)')
+plt.legend()
 
-# balance: 资产负债表
-# total_assets: 总资产
-# total_non_current_assets: 非流动资产总计
+# 总资产报酬率
+plt.subplot(3, 2, 2)
+plt.plot(years, return_on_assets, marker='o', color='green', label='Return on Assets')
+plt.title('Return on Assets Over Years')
+plt.xlabel('Year')
+plt.ylabel('Percentage (%)')
+plt.legend()
 
-q = query(balance.total_assets,
-          balance.total_non_current_assets
-          ).filter(
-    balance.code == CODE,
-)
-bs1 = get_fundamentals(q, statDate=str(DATE))  # 基准年度数据 （2022）
-bs2 = get_fundamentals(q, statDate=str(DATE - 1))  # 上一年资产负债表数据 (2021)
-#bs2为空导致计算cwc代码报错，直接代入一个cwc值
-# 计算 CWC (annual change in net working capital): 净营运资本增加值
-# cwc = (bs1['total_assets'].iloc[0] - bs1['total_non_current_assets'].iloc[0]) - \
-#       (bs2['total_assets'].iloc[0] - bs2['total_non_current_assets'].iloc[0])
-cwc = 21162636701.51001
-# 接下来我们需要假设一些估算所必须的比率，对最终我们得到相对准确的公司估值
-# 非常重要。这里粗略使用一些其他报告里采取的估计值
+# 收入和净利润
+plt.subplot(3, 2, 3)
+plt.bar(years, revenue, label='Revenue')
+plt.bar(years, net_profit, label='Net Profit', alpha=0.7)
+plt.title('Revenue and Net Profit Over Years')
+plt.xlabel('Year')
+plt.ylabel('Amount (Million Yuan)')
+plt.legend()
 
-earnings_growth_rate = 0.1  # 收入增长率
-discount_rate = 0.08  # 贴现率
-cap_ex_growth_rate = 0.1  # 资本支出增长率
-perpetual_growth_rate = 0.02  # 永续增长率
+# 债务比率和流动比率
+plt.subplot(3, 2, 4)
+plt.plot(years, debt_ratio, marker='o', label='Debt Ratio')
+plt.plot(years, current_ratio, marker='o', label='Current Ratio')
+plt.title('Debt Ratio and Current Ratio Over Years')
+plt.xlabel('Year')
+plt.ylabel('Ratio')
+plt.legend()
 
-# 计算 EBIT: 息税前利润，这里用(总利润+财务费用)作为近似
-# tax_rate: 税率
-# non_cash_charges: 折旧和摊销的总和
-# cap_ex: 资本化支出
+# 经营活动、投资活动和筹资活动的现金流
+plt.subplot(3, 2, 5)
+plt.plot(years, operating_activities, marker='o', label='Operating Activities')
+plt.plot(years, investing_activities, marker='o', label='Investing Activities')
+plt.plot(years, financing_activities, marker='o', label='Financing Activities')
+plt.title('Cash Flows from Operating, Investing, and Financing Activities')
+plt.xlabel('Year')
+plt.ylabel('Cash Flow (Million Yuan)')
+plt.legend()
 
-ebit = incstat['total_profit'][0] + incstat['financial_expense'][0]
-tax_rate = incstat['income_tax_expense'][0] / \
-           incstat['total_profit'][0]
-non_cash_charges = cashflow['fixed_assets_depreciation'][0] + \
-                   cashflow['intangible_assets_amortization'][0] + cashflow['defferred_expense_amortization'][0]
-cap_ex = cashflow['fix_intan_other_asset_acqui_cash'][0]
-
-
-def ulFCF(ebit, tax_rate, non_cash_charges, cwc, cap_ex):
-    # 返回无杠杆自由现金流 (unleveraged future cash flow)
-    return ebit * (1 - tax_rate) + non_cash_charges + cwc - cap_ex
-
-
-# year为基准年份，period表示还可以earning_growth_rate增长的年份，之后为永续增长期
-
-def enterprise_value(year, period, discount_rate, earnings_growth_rate, cap_ex_growth_rate, perpetual_growth_rate,
-                     cwc, ebit, tax_rate, non_cash_charges, cap_ex):
-    flows = []
-    dfcf = ulFCF(ebit, tax_rate, non_cash_charges, cwc, cap_ex)
-    output = pd.DataFrame([dfcf, ebit, non_cash_charges, cwc, cap_ex], index=["DFCF", "EBIT", "D&A", "CWC", "CAP_EX"])
-    index = ["DFCF", "EBIT", "D&A", "CWC", "CAP_EX"]
-    columns = [year]
-    for yr in range(1, 1 + period):
-        ebit = ebit * (1 + (yr * earnings_growth_rate))
-        non_cash_charges = non_cash_charges * (1 + (yr * earnings_growth_rate))
-        cwc = cwc * 0.7
-        cap_ex = cap_ex * (1 + (yr * cap_ex_growth_rate))
-
-        flow = ulFCF(ebit, tax_rate, non_cash_charges, cwc, cap_ex)
-        # print(flow, ebit, non_cash_charges, cwc, cap_ex)
-
-        PV_flow = flow / ((1 + discount_rate) ** yr)
-        flows.append(PV_flow)
-        year += 1
-        columns.append(year)
-        pdSeries = pd.Series([PV_flow, ebit, non_cash_charges, cwc, cap_ex], index=index)
-        output = pd.concat([output, pdSeries], axis=1)
-
-    output.columns = columns
-
-    # DATE ~ DATE+period 期间的折现值
-    NPV_FCF = sum(flows)
-
-    # 计算永续期的折现值
-    final_cashflow = flows[-1] * (1 + perpetual_growth_rate)
-    TV = final_cashflow / (discount_rate - perpetual_growth_rate)
-    NPV_TV = TV / (1 + discount_rate) ** (1 + period)
-
-    return ((NPV_TV + NPV_FCF, output))
-
-
-ulFCF(ebit, tax_rate, non_cash_charges, cwc, cap_ex)
-
-var = enterprise_value(DATE, 5, discount_rate, earnings_growth_rate, cap_ex_growth_rate, perpetual_growth_rate,
-                       cwc, ebit, tax_rate, non_cash_charges, cap_ex)[1]
-
-
-# valuaion: 公司财务指标表
-q = query(valuation.capitalization,
-          valuation.market_cap
-          ).filter(
-    valuation.code == CODE,
-)
-# capitalization: 总股本(万股)
-capitalization = get_fundamentals(q, statDate=str(DATE)).iloc[0, 0] * 10000
-# market_cap: 总市值(亿元)
-market_cap = get_fundamentals(q, statDate=str(DATE)).iloc[0, 1] * 100000000
-
-
-q = query(balance.total_liability,
-          balance.cash_equivalents
-          ).filter(
-    balance.code == CODE,
-)
-# total_liability: 总负债
-total_liability = get_fundamentals(q, statDate=str(DATE)).iloc[0, 0]
-# cash_equivalents: 现金及现金等价物
-cash_equivalents = get_fundamentals(q, statDate=str(DATE)).iloc[0, 1]
-
-
-
-def equity_value(enterprise_val):
-    equity_val = enterprise_val - total_liability + cash_equivalents
-    share_price = equity_val / capitalization
-
-    # 返回公司股价的估计值
-    return share_price
-
-
-enterprise_val = enterprise_value(DATE, 5, discount_rate, earnings_growth_rate, cap_ex_growth_rate,
-                                  perpetual_growth_rate,
-                                  cwc, ebit, tax_rate, non_cash_charges, cap_ex)
-
-# 估计的股价， 600319贵州茅台，2019年
-print('按照DCF模型估算，贵州茅台价值为：',equity_value(enterprise_val[0]))
+# 显示图形
+plt.tight_layout()
+plt.show()

@@ -42,7 +42,7 @@ investment_scenarios = {
 }
 
 # 随机数种子，确保结果可复现
-np.random.seed(0)
+np.random.seed(99)
 
 for year in range(working_years):
     # 计算这一年的工资和生活支出

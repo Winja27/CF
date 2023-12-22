@@ -1,6 +1,5 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-# 假设CSV文件名为'financial_data.csv'
 df = pd.read_csv('贵州茅台近十年财报.csv', index_col=1)
 
 # 提取关键指标数据

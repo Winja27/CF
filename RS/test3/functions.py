@@ -1,0 +1,452 @@
+import itertools
+import math
+import random
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.metrics import mean_absolute_error  # 添加缺失的导入语句
+from matplotlib import rcParams
+from sklearn.metrics import mean_squared_error, accuracy_score, f1_score, precision_score, recall_score
+
+# 数据读取和分组
+
+
+def data_read1(ratings_address, movie_address):
+    ratings = pd.read_csv(ratings_address)
+    items = pd.read_csv(movie_address, sep=',')
+    users = set(ratings['userId'])
+    rating_index_set = [(i[1], i[2]) for i in (
+        ratings.loc[:, ['userId', 'movieId']].itertuples())]
+    random.shuffle(rating_index_set)
+    folds = chunks(rating_index_set, 3)
+    return folds, ratings, items, users
+
+
+def chunks(arr, m):  # 分块函数
+    n = int(math.ceil(len(arr) / float(m)))
+    return [arr[i:i + n] for i in range(0, len(arr), n)]
+
+
+# 确定邻居数量变化次数
+
+
+def neighbors_require1():
+    neighbors_require = [i for i in range(5, 5 * (10 + 1), 5)]
+    return neighbors_require
+
+
+# 用户配对
+
+
+def user_pair(user):
+    pairs = [i for i in itertools.combinations(user, 2)]
+    return pairs
+
+
+# 用户，物品，评分索引，dataframe表示
+
+
+def indexform1(ratings):
+    dict_uir = {}
+    for r in ratings.itertuples():
+        user = int(r.userId)  # 列索引
+        item = int(r.movieId)  # 行索引
+        rating = r.rating
+        if user in dict_uir:
+            d = dict_uir[user]
+            d[item] = rating
+        else:
+            d = {item: rating}
+            dict_uir[user] = d
+    df_uir = pd.DataFrame.from_dict(dict_uir)
+    return df_uir
+
+
+# 获取某用户评分过物品的函数
+
+
+def getItemsBy(df_uir, user: int):
+    dict_uir = df_uir
+    if user in dict_uir:
+        return set(dict_uir[user].keys())
+    else:
+        print("获取用户评分过物品函数错误，似乎该用户没有评分过该物品")
+
+
+# 获取user item，的评分
+
+
+def getRaring(df_uir, user: int, item: int):
+    dict_uir = df_uir
+    if user in dict_uir:
+        if item in dict_uir[user]:
+            return dict_uir[user][item]
+        else:
+            print("获取user item评分函数错误，该用户没有给该物品评分")
+    else:
+        print("获取user item评分函数错误，似乎不存在该用户")
+
+
+# 计算皮尔逊相似性
+def cal_pccs(ratings1, ratings2):
+    similarity = 0
+    numerator = 0
+    denominator1 = 0
+    denominator2 = 0
+    for i in range(len(ratings1)):
+        if i >= len(ratings2):  # 确保 ratings1 和 ratings2 的长度相同
+            break
+        avg_rating1 = np.mean(ratings1[:i + 1])
+        avg_rating2 = np.mean(ratings2[:i + 1])
+        numerator += (ratings1[i] - avg_rating1) * (ratings2[i] - avg_rating2)
+        denominator1 += (ratings1[i] - avg_rating1) ** 2
+        denominator2 += (ratings2[i] - avg_rating2) ** 2
+    if denominator1 != 0 and denominator2 != 0 and not np.isnan(numerator):
+        similarity = numerator / \
+                     (np.sqrt(denominator1) * np.sqrt(denominator2))
+        return similarity
+    else:
+        similarity = None
+        return similarity
+
+
+# 计算用户之间的相似度
+
+
+def getSimilarity(testing_set, df_uir, pairs):
+    dict_uir = df_uir
+    similarity = {}
+    for (u, v) in pairs:
+        items_by_u = getItemsBy(dict_uir, u)
+        items_by_v = getItemsBy(dict_uir, v)
+        if len(items_by_u) > 0 and len(items_by_v) > 0:
+            shared_set = set()
+            intersected = items_by_u.intersection(items_by_v)
+            for item in intersected:
+                if (u, item) in testing_set or (v, item) in testing_set:
+                    ()
+                else:
+                    shared_set.add(item)
+            if len(intersected) > 0:
+                ratings_u = [getRaring(dict_uir, u, i) for i in shared_set]
+                ratings_v = [getRaring(dict_uir, v, i) for i in shared_set]
+                if ratings_u != None and ratings_v != None:
+                    s = cal_pccs(ratings_u, ratings_v)
+                    if s == None or math.isnan(s):
+                        ()
+                    else:
+                        if u in similarity:
+                            similarity[u][v] = s
+                        else:
+                            d = {v: s}
+                            similarity[u] = d
+                        if v in similarity:
+                            similarity[v][u] = s
+                        else:
+                            d = {u: s}
+                            similarity[v] = d
+                else:
+                    ()
+            else:
+                ()
+        else:
+            ()
+    return similarity
+# 邻居排序
+
+
+def getNeighbors(similarity):
+    neighbors = {}
+    for s in similarity:
+        neigh = similarity[s]
+        r = [(k, neigh[k]) for k in neigh]
+        r = sorted(r, key=lambda i: i[1], reverse=True)
+        neighbors[s] = r
+    return neighbors
+
+
+# 定义邻居数据单元
+class NeighborInfo():
+    def __init__(self, neighbor_id, rating_on_target, similarity):
+        self.Neighbor_id = neighbor_id
+        self.Rating = rating_on_target
+        self.Similarity = similarity
+
+
+# 针对u，i对进行评分预测
+
+
+def similarity_info(folds, df_uir,  pairs):
+
+    global df_similarity
+    dict_uir = df_uir.to_dict()
+    for a, b in dict_uir.items():
+        for c in list(b.keys()):
+            if math.isnan(b[c]):
+                del b[c]
+    for fold in folds:
+        testing_set = set(fold)
+        similarity = getSimilarity(testing_set, dict_uir, pairs)
+        df_similarity = pd.DataFrame.from_dict(similarity)
+    return df_similarity
+
+def threshold_filter(similarity, th):
+    filtered_similarity = {u: {v: s for v, s in sim.items() if abs(s) > th} for u, sim in similarity.items()}
+    return filtered_similarity
+
+def calculate_distance(filtered_similarity):
+    distance = {}
+    for u, sim in filtered_similarity.items():
+        for v, s in sim.items():
+            if u != v:
+                if u in distance:
+                    distance[u][v] = s
+                else:
+                    distance[u] = {v: s}
+                if v in distance:
+                    distance[v][u] = -s  # 注意 v 到 u 的距离为 -s
+                else:
+                    distance[v] = {u: -s}
+    return distance
+
+def slope_one_predict(user, item, df_uir, distance, neighbors):
+    ratings_by_user = df_uir[user].dropna()
+
+    # 如果用户已经评分过该物品，直接返回已知的评分值
+    if item in ratings_by_user.index:
+        return ratings_by_user[item]
+
+    numerator = 0
+    denominator = 0
+
+    for v, dist in neighbors[user].items():
+        if item in df_uir[v].index:
+            numerator += dist * (df_uir[v][item] - distance[user][v])
+            denominator += abs(dist)
+
+    if denominator == 0:
+        return None  # 没有可用的信息进行预测
+
+    prediction = numerator / denominator
+    return prediction
+def predict_all(folds, df_uir, distance, neighbors_require):
+    mae_values = []  # 用于保存不同邻居数下的 MAE 值
+
+    for n in neighbors_require:
+        predictions = {}
+
+        for fold in folds:
+            for user, item in fold:
+                if user not in predictions:
+                    predictions[user] = {}
+
+                prediction = slope_one_predict(user, item, df_uir, distance, neighbors_require)
+                if prediction is not None:
+                    predictions[user][item] = prediction
+
+        # 计算 MAE
+        true_values = []
+        predicted_values = []
+        for user, items in predictions.items():
+            for item, prediction in items.items():
+                true_value = df_uir[user][item]
+                if not np.isnan(true_value):  # 考虑用户评分的缺失值
+                    true_values.append(true_value)
+                    predicted_values.append(prediction)
+
+        mae = mean_absolute_error(true_values, predicted_values)
+        mae_values.append(mae)
+
+        # 输出当前邻居数下的 MAE
+        print(f"Neighbors: {n}, MAE: {mae}")
+
+        # 计算并输出RMSE、Accuracy、F1、Precision、Recall
+        evaluate(predictions, df_uir)
+
+    # 绘制不同邻居数下的 MAE 变化图表
+    plt.plot(neighbors_require, mae_values, marker='o', label='MAE vs Neighbors')
+
+    # 设置图表参数
+    rcParams.update({
+        'axes.unicode_minus': False,
+        "figure.figsize": [16, 9],
+        "figure.dpi": 300,
+        'font.family': 'serif',
+        'font.size': 14,
+        'axes.labelsize': 14,
+        'xtick.labelsize': 12,
+        'ytick.labelsize': 12,
+        'legend.fontsize': 12,
+        'lines.linewidth': 2,
+        'axes.grid': True,
+        'grid.alpha': 0.5,
+        'axes.facecolor': 'white'
+    })
+
+    # 绘制图例和标签
+    plt.legend()
+    plt.title('MAE vs Neighbors')
+    plt.xlabel('Number of Neighbors')
+    plt.ylabel('MAE')
+    plt.show()
+
+# 计算RMSE、Accuracy、F1、Precision、Recall
+def evaluate(predictions, df_uir):
+    predicted_values = []
+    true_values = []
+
+    for user, items in predictions.items():
+        for item, prediction in items.items():
+            true_value = df_uir[user][item]
+            if not np.isnan(true_value):  # 考虑用户评分的缺失值
+                true_values.append(true_value)
+                predicted_values.append(prediction)
+
+    rmse = np.sqrt(mean_squared_error(true_values, predicted_values))
+    accuracy = accuracy_score(np.round(true_values), np.round(predicted_values))
+    f1 = f1_score(np.round(true_values), np.round(predicted_values))
+    precision = precision_score(np.round(true_values), np.round(predicted_values))
+    recall = recall_score(np.round(true_values), np.round(predicted_values))
+
+    print(f"RMSE: {rmse}")
+    print(f"Accuracy: {accuracy}")
+    print(f"F1 Score: {f1}")
+    print(f"Precision: {precision}")
+    print(f"Recall: {recall}")
+
+def visualization_ranking(df_prediction):
+    prediction = df_prediction.to_dict()
+    metrics_all = {'HLU': [], 'NDCG': []}
+
+    for k in prediction:
+        if k == 'actual':
+            continue  # 跳过 'actual' 键
+
+        # 为每个 k 值初始化排名列表和真实值列表
+        ranked_movies_all = []
+        actual_all = []
+
+        for kv in prediction[k]:
+            predicted = prediction[k][kv]
+            actual = prediction['actual'][kv]
+
+            # 生成排名列表
+            ranked_movies, actual_values = generate_ranked_list(predicted, actual)
+            ranked_movies_all.append(ranked_movies)
+            actual_all.append(actual_values)
+
+        # 计算 HLU 和 NDCG
+        hlu_values, ndcg_values = calculate_hlu_ndcg_batch(ranked_movies_all, actual_all)
+
+        # 取平均值作为该 k 值的 HLU 和 NDCG
+        metrics_all['HLU'].append(np.mean(hlu_values))
+        metrics_all['NDCG'].append(np.mean(ndcg_values))
+
+    # 可视化
+    rcParameters = {
+        'axes.unicode_minus': False,
+        "figure.figsize": [16, 9],
+        "figure.dpi": 300,
+        'font.family': 'serif',
+        'font.size': 14,
+        'axes.labelsize': 14,
+        'xtick.labelsize': 12,
+        'ytick.labelsize': 12,
+        'legend.fontsize': 12,
+        'lines.linewidth': 2,
+        'axes.grid': True,
+        'grid.alpha': 0.5,
+        'axes.facecolor': 'white'
+    }
+    sns.set(rc=rcParameters)
+
+    # 使用邻居数量作为 x 轴
+    neighbors = list(prediction.keys())
+    neighbors.remove('actual')  # 排除 'actual' 键
+    for metric in metrics_all:
+        data = {'Neighbors': neighbors, metric: metrics_all[metric]}
+        df_metric = pd.DataFrame(data)
+        g = sns.lineplot(x="Neighbors", y=metric, data=df_metric)
+        # plt.savefig(metric + '.pdf')
+        # plt.show()
+
+
+def generate_ranked_list(predicted_value, actual_value, num_movies=10):
+    # 根据预测值和真实值生成排名列表
+    ranked_movies_actual = list(range(1, num_movies + 1))  # 假设有 num_movies 个电影
+
+    # 如果电影的真实评分大于等于用户的平均评分（3.5分），则返回1，否则返回0
+    relevant_list = [1 if actual_value >= 3.5 else 0 for _ in ranked_movies_actual]
+
+    return ranked_movies_actual, relevant_list
+
+
+def calculate_hlu(ranked_movies, relevant_list):
+    hlu_score = 0.0
+    half_life = 0.5  # 半衰期参数，您可以根据需要调整此值
+
+    for i, _ in enumerate(ranked_movies):
+        discount = half_life ** i
+        hlu_score += relevant_list[i] * discount
+
+    return hlu_score
+
+
+def calculate_ndcg(ranked_movies, actual_values, k=None):
+    if k is None:
+        k = len(ranked_movies)
+
+    ranked_movies_sorted = sorted(ranked_movies, key=lambda x: actual_values[x - 1], reverse=True)
+
+    dcg = np.sum([actual_values[x - 1] / np.log2(i + 2) for i, x in enumerate(ranked_movies_sorted[:k])])
+    idcg = np.sum(sorted(actual_values, reverse=True)[:k] / np.log2(np.arange(2, k + 2)))
+    ndcg = dcg / idcg if idcg != 0 else 0.0
+
+    return ndcg
+
+
+def calculate_hlu_ndcg_batch(ranked_movies_all, actual_all, k=None):
+    hlu_values = []
+    ndcg_values = []
+
+    for i in range(len(ranked_movies_all)):
+        ranked_movies = ranked_movies_all[i]
+        actual_value = actual_all[i]
+
+        hlu = calculate_hlu(ranked_movies, actual_value)
+        ndcg = calculate_ndcg(ranked_movies, actual_value, k)
+
+        hlu_values.append(hlu)
+        ndcg_values.append(ndcg)
+
+    return hlu_values, ndcg_values
+
+def slope_one_predict_all(folds, df_uir, distance, neighbors_require):
+    predictions = {}
+
+    for n in neighbors_require:
+        for fold in folds:
+            for user, item in fold:
+                if user not in predictions:
+                    predictions[user] = {}
+
+                prediction = slope_one_predict(user, item, df_uir, distance, neighbors_require)
+                if prediction is not None:
+                    predictions[user][item] = prediction
+
+    return predictions
+
+def get_ground_truth(folds, df_uir):
+    ground_truth = {}
+
+    for fold in folds:
+        for user, item in fold:
+            if user not in ground_truth:
+                ground_truth[user] = {}
+
+            true_value = df_uir[user][item]
+            if not np.isnan(true_value):  # 考虑用户评分的缺失值
+                ground_truth[user][item] = true_value
+
+    return ground_truth

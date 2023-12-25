@@ -18,6 +18,7 @@ def get_data():
     result = pd.concat([score_1_melted, score_2_melted], axis=0)
     result.reset_index(drop=True, inplace=True)
     result['value'] = result.groupby('variable')['value'].transform(normalize)
+    result.to_csv('result_data.csv', index=False)
     return result
 
 

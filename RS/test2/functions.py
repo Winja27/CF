@@ -18,7 +18,7 @@ def data_read1(ratings_address, movie_address):
     rating_index_set = [(i[1], i[2]) for i in (
         ratings.loc[:, ['userId', 'movieId']].itertuples())]
     random.shuffle(rating_index_set)
-    folds = chunks(rating_index_set, 5)
+    folds = chunks(rating_index_set, 3)
     return folds, ratings, items, users
 
 
@@ -31,7 +31,7 @@ def chunks(arr, m):  # 分块函数
 
 
 def neighbors_require1():
-    neighbors_require = [i for i in range(5, 5 * (10 + 1), 5)]
+    neighbors_require = [i for i in range(5, 5 * (40 + 1), 5)]
     return neighbors_require
 
 
@@ -346,6 +346,7 @@ def get_observation_of_prediction(df_uir, df_prediction):
     df_prediction = pd.DataFrame(prediction)
     return df_prediction
 
+
 def visualization_mae(df_prediction):
     prediction = df_prediction.to_dict()
     mae_all = {}
@@ -392,6 +393,7 @@ def visualization_mae(df_prediction):
     plt.savefig('MAE' + '.pdf')
     print("finished.")
     plt.show()
+
 
 def visualization_rmse(df_prediction):
     prediction = df_prediction.to_dict()
@@ -440,12 +442,21 @@ def visualization_rmse(df_prediction):
     print("finished.")
     plt.show()
 
-'''你的任务看起来像是一个回归任务（预测用户的评分），而不是分类任务。对于回归任务，我们通常使用像均方误差（Mean Squared Error）或者均方根误差（Root Mean Squared Error）这样的指标来评估模型的性能，而不是使用准确率（Accuracy）、精确度（Precision）、召回率（Recall）或者F1分数（F1 Score）。
+
+'''你的任务看起来像是一个回归任务（预测用户的评分），而不是分类任务。对于回归任务，我们通常使用像均方误差（Mean Squared Error）或者均方根误差（Root Mean Squared Error）这样的指标来评估模型的性能，而不是使用准确率（Accuracy）、精确度（Precision）、Recall（Recall）或者F1分数（F1 Score）。
 
 如果你的任务确实是分类任务，那么你需要将你的连续预测值转换为离散的类别标签。这通常需要你设定一个阈值，然后根据预测值是否超过这个阈值来决定预测的类别。'''
+
+
+
+def convert_to_discrete(predicted_value, actual_value):
+    return 1 if predicted_value - actual_value > 0  else 0
+
+
+
 def convert_to_discrete(predicted_value, actual_value, threshold=0.3):
     return 1 if abs(predicted_value - actual_value) < threshold else 0
-# 这个函数接受一个预测值、一个实际值和一个阈值作为输入，然后返回一个类别标签。如果预测值和实际值之间的差距小于阈值，那么类别标签为1，否则类别标签为0。
+
 def visualization_classification(df_prediction):
     prediction = df_prediction.to_dict()
     metrics_all = {'Accuracy': [], 'Precision': [], 'Recall': [], 'F1': []}
@@ -494,9 +505,8 @@ def visualization_classification(df_prediction):
         data = {'Neighbors': list(range(1, len(metrics_all[metric]) + 1)), metric: metrics_all[metric]}
         df_metric = pd.DataFrame(data)
         g = sns.lineplot(x="Neighbors", y=metric, data=df_metric)
-        plt.savefig(metric + '.pdf')
-        plt.show()
-
+        # plt.savefig(metric + '.pdf')
+        # plt.show()
 
 def visualization_ranking(df_prediction):
     prediction = df_prediction.to_dict()
@@ -504,21 +514,30 @@ def visualization_ranking(df_prediction):
 
     for k in prediction:
         if k == 'actual':
-            break
+            continue  # 跳过 'actual' 键
+
+        # 为每个 k 值初始化排名列表和真实值列表
+        ranked_movies_all = []
+        actual_all = []
+
         for kv in prediction[k]:
             predicted = prediction[k][kv]
             actual = prediction['actual'][kv]
 
-            # 计算HLU
-            hlu = calculate_hlu(actual, predicted)  # 这里需要你自己实现
-            # 计算NDCG
-            # ndcg_score函数需要输入的是二维数组，所以在调用时需要将actual和predicted转换成二维数组。
-            ndcg = ndcg_score(np.asarray(actual).reshape(1, -1), np.asarray(predicted).reshape(1, -1))
+            # 生成排名列表
+            ranked_movies, actual_values = generate_ranked_list(predicted, actual)
+            ranked_movies_all.append(ranked_movies)
+            actual_all.append(actual_values)
 
-            metrics_all['HLU'].append(hlu)
-            metrics_all['NDCG'].append(ndcg)
+        # 计算 HLU 和 NDCG
+        hlu_values, ndcg_values = calculate_hlu_ndcg_batch(ranked_movies_all, actual_all)
 
-    rcParamters = {
+        # 取平均值作为该 k 值的 HLU 和 NDCG
+        metrics_all['HLU'].append(np.mean(hlu_values))
+        metrics_all['NDCG'].append(np.mean(ndcg_values))
+
+    # 可视化
+    rcParameters = {
         'axes.unicode_minus': False,
         "figure.figsize": [16, 9],
         "figure.dpi": 300,
@@ -533,16 +552,65 @@ def visualization_ranking(df_prediction):
         'grid.alpha': 0.5,
         'axes.facecolor': 'white'
     }
-    sns.set(rc=rcParamters)
+    sns.set(rc=rcParameters)
 
+    # 使用邻居数量作为 x 轴
+    neighbors = list(prediction.keys())
+    neighbors.remove('actual')  # 排除 'actual' 键
     for metric in metrics_all:
-        data = {'Neighbors': list(range(1, len(metrics_all[metric]) + 1)), metric: metrics_all[metric]}
+        data = {'Neighbors': neighbors, metric: metrics_all[metric]}
         df_metric = pd.DataFrame(data)
         g = sns.lineplot(x="Neighbors", y=metric, data=df_metric)
-        plt.savefig(metric + '.pdf')
-        plt.show()
+        # plt.savefig(metric + '.pdf')
+        # plt.show()
 
 
-def calculate_hlu(actual, predicted):
-    # 这里需要你自己实现HLU这个算法排序性能指标的计算方法
-    pass
+def generate_ranked_list(predicted_value, actual_value, num_movies=10):
+    # 根据预测值和真实值生成排名列表
+    ranked_movies_actual = list(range(1, num_movies + 1))  # 假设有 num_movies 个电影
+
+    # 如果电影的真实评分大于等于用户的平均评分（3.5分），则返回1，否则返回0
+    relevant_list = [1 if actual_value >= 3.5 else 0 for _ in ranked_movies_actual]
+
+    return ranked_movies_actual, relevant_list
+
+
+def calculate_hlu(ranked_movies, relevant_list):
+    hlu_score = 0.0
+    half_life = 0.5  # 半衰期参数，您可以根据需要调整此值
+
+    for i, _ in enumerate(ranked_movies):
+        discount = half_life ** i
+        hlu_score += relevant_list[i] * discount
+
+    return hlu_score
+
+
+def calculate_ndcg(ranked_movies, actual_values, k=None):
+    if k is None:
+        k = len(ranked_movies)
+
+    ranked_movies_sorted = sorted(ranked_movies, key=lambda x: actual_values[x - 1], reverse=True)
+
+    dcg = np.sum([actual_values[x - 1] / np.log2(i + 2) for i, x in enumerate(ranked_movies_sorted[:k])])
+    idcg = np.sum(sorted(actual_values, reverse=True)[:k] / np.log2(np.arange(2, k + 2)))
+    ndcg = dcg / idcg if idcg != 0 else 0.0
+
+    return ndcg
+
+
+def calculate_hlu_ndcg_batch(ranked_movies_all, actual_all, k=None):
+    hlu_values = []
+    ndcg_values = []
+
+    for i in range(len(ranked_movies_all)):
+        ranked_movies = ranked_movies_all[i]
+        actual_value = actual_all[i]
+
+        hlu = calculate_hlu(ranked_movies, actual_value)
+        ndcg = calculate_ndcg(ranked_movies, actual_value, k)
+
+        hlu_values.append(hlu)
+        ndcg_values.append(ndcg)
+
+    return hlu_values, ndcg_values
